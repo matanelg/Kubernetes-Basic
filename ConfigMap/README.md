@@ -10,10 +10,12 @@ There are four different ways that you can use a ConfigMap to configure a contai
 Check Out kubernetes documentation [link-01](https://kubernetes.io/docs/concepts/configuration/configmap) [link-02](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap)
 
 ## Deploy Examples
+Example 01
 ```bash
 kubectl apply -f example-01.yaml
 kubectl logs pod/test-pod-00
 ```
+Output 01
 ```bash
 KUBERNETES_PORT=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT=443
@@ -30,11 +32,12 @@ PWD=/
 KUBERNETES_SERVICE_HOST=10.152.183.1
 var_name_01=value_00
 ```
-
+Example 02
 ```bash
 kubectl apply -f example-02.yaml
 kubectl logs pod/test-pod-02
 ```
+Output 02
 ```bash
 KUBERNETES_PORT=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT=443
@@ -52,11 +55,12 @@ KUBERNETES_SERVICE_PORT_HTTPS=443
 PWD=/
 KUBERNETES_SERVICE_HOST=10.152.183.1
 ```
-
+Example 03
 ```bash
 kubectl apply -f example-03.yaml
 kubectl logs pod/test-pod-03
 ```
+Output 03
 ```bash
 KUBERNETES_PORT=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT=443
@@ -74,21 +78,23 @@ KUBERNETES_SERVICE_HOST=10.152.183.1
 var_name_03=value_03
 var_name_04=value_04
 ```
-
+Example 04
 ```bash
 kubectl apply -f example-04.yaml
 kubectl logs pod/test-pod-04
 ```
+Output 04
 ```bash
 line-01 on file-00.txt
 line-02 on file-00.txt
 line-03 on file-00.txt
 ```
-
+Example 05
 ```bash
 kubectl apply -f example-05.yaml
 kubectl logs pod/test-pod-05
 ```
+Output 05
 ```bash
 print env:
 var_name_01=value_02
