@@ -1,0 +1,28 @@
+# Example-01
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: key-value-01
+data:
+  key_00: "value_00"
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod-01
+spec:
+  containers:
+    - name: test-container-01
+      image: k8s.gcr.io/busybox
+      command: [ "/bin/sh", "-c", "env" ]
+      env:
+        - name: var_name_01
+          valueFrom:
+            configMapKeyRef:
+              name: key-value-01
+              key: key_00
+  restartPolicy: Never
+
