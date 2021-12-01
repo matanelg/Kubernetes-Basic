@@ -83,7 +83,7 @@ var_name_04=value_04
 kubectl apply -f example-04.yaml
 kubectl logs pod/test-pod-04
 ```
-Output 04
+Output
 ```bash
 line-01 on file-00.txt
 line-02 on file-00.txt
