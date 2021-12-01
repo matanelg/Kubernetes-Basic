@@ -116,4 +116,66 @@ line-03 on file-03.txt
 ```
 
 ## Terminology
+```yaml
+---
+apiVersion: v1						# apiVersion - Kubernetes default api version.
+kind: ConfigMap					# Kind - Create ConfigMap object.
+metadata:						# metadata - Here we can define object name, labels and annotaions.  
+  name: multiple-data					# name - Object's name
+data:							# data - Define key value pairs & files that will insert to pod/container. 
+  key_02: "value_02"					# Define key value pairs.
+  key_03: "value_03"					# Define key value pairs.
+  file-02.txt: |					# Define file 1.
+    line-01 on file-02.txt
+    line-02 on file-02.txt    
+  file-03.txt: |					# Define file 1.
+    line-01 on file-03.txt
+    line-02 on file-03.txt
+    line-03 on file-03.txt   
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod-05
+spec:
+  containers:
+    - name: test-container-05
+      image: k8s.gcr.io/busybox
+      command: ["/bin/sh", "-c"]
+      args:
+        - echo "print env:";
+          env | grep var_name_01;
+          echo "var_name_02=$(var_name_02)";
+          echo "check /etc/config path:";
+          ls -la /etc/config;
+          echo "cat files in /etc/config/:";
+          cat /etc/config/file-02.txt;
+          cat /etc/config/file-03.txt;
+      env:
+        - name: var_name_01
+          valueFrom:
+            configMapKeyRef:
+              name: multiple-data
+              key: key_02
+        - name: var_name_02
+          valueFrom:
+            configMapKeyRef:
+              name: multiple-data
+              key: key_03      
+      volumeMounts:
+      - name: config-volume-01
+        mountPath: /etc/config
+  volumes:
+    - name: config-volume-01
+      configMap:
+        name: multiple-data
+        items:
+        - key: file-02.txt
+          path: file-02.txt
+        - key: file-03.txt
+          path: file-03.txt        
+  restartPolicy: Never
+```
+
 
