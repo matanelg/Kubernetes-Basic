@@ -4,7 +4,6 @@ There are four different ways that you can use a ConfigMap to configure a contai
 1. Inside a container command and args.
 2. Environment variables for a container.
 3. Add a file in read-only volume, for the application to read.
-4. Write code to run inside the Pod that uses the Kubernetes API to read a ConfigMap.
-<br/>
-Check Out kubernetes documentation [link](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap)
+4. Write code to run inside the Pod that uses the Kubernetes API to read a ConfigMap.<br/>
+Check Out kubernetes documentation [link-01](https://kubernetes.io/docs/concepts/configuration/configmap) [link-02](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap)
 
