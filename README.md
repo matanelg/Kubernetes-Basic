@@ -14,7 +14,7 @@ This repository come to explain kubernetes basic objects, their attributes and h
 <br/><br/>
 - **Volume Mounts** – volume mounts allow us to mount files into specific paths of the container in order to mount a file a volume needs to be defined.
 <br/><br/>
-- **Volumes** – volumes are a medium of storage attached to a pod volumes can be a folder on the host where the pod is running or a persistent volume. volumes can also be configurations or secrets configurations are defined as config maps
+- **Volumes** – volumes are a medium of storage attached to a pod volumes can be a folder on the host where the pod is running or a persistent volume. volumes can also be configurations or secrets configurations are defined as config maps.
 <br/><br/>
 - **Config Map** – config maps allow us to store configurations for pods as files or key value pairs that can be mapped to environment variables.
 <br/><br/>
@@ -32,7 +32,7 @@ This repository come to explain kubernetes basic objects, their attributes and h
 <br/><br/>
 - **Persistent Volume Claims** –  persistent volume claims allow developers to claim storage from a persistent volume without having to provision or interact with the storage itself.
 <br/><br/>
-- **Daemon Set** – daemon sets has its own scheduling mechanisms to ensure a pod runs on every node
+- **Daemon Set** – daemon sets has its own scheduling mechanisms to ensure a pod runs on every node.
 <br/><br/>
 - **Services** – services allow us to define how to access pods over the network. when we define a service we give it a name and we select pods using label selectors we define a service port and map it to a pod container port. the pods are then accessible over the service name as a dns plus port. the types of services available are cluster ip for private communication, load balancer for public communication mostly via cloud resources and node port where the ports are expose and can be reached by public communication.
 <br/><br/>
