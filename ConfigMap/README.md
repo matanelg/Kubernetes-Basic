@@ -119,31 +119,31 @@ line-03 on file-03.txt
 ```yaml
 ---
 apiVersion: v1						# apiVersion - Kubernetes default api version.
-kind: ConfigMap					# Kind - Create ConfigMap object.
+kind: ConfigMap 					# Kind - Create ConfigMap object.
 metadata:						# metadata - Here we can define object name, labels and annotaions.  
-  name: multiple-data					# name - Object's name
-data:							# data - Define key value pairs & files that will insert to pod/container. 
-  key_02: "value_02"					# Define key value pairs.
-  key_03: "value_03"					# Define key value pairs.
-  file-02.txt: |					# Define file 1.
+  name: multiple-data					# name - Object name.
+data:							# data - Store key value pairs & files that will insert to pod/container. 
+  key_02: "value_02"					# Create key value pairs.
+  key_03: "value_03"					# Create key value pairs.
+  file-02.txt: |					# Create file.
     line-01 on file-02.txt
     line-02 on file-02.txt    
-  file-03.txt: |					# Define file 1.
+  file-03.txt: |					# Create file.
     line-01 on file-03.txt
     line-02 on file-03.txt
     line-03 on file-03.txt   
 
 ---
-apiVersion: v1
-kind: Pod
-metadata:
-  name: test-pod-05
-spec:
-  containers:
-    - name: test-container-05
-      image: k8s.gcr.io/busybox
-      command: ["/bin/sh", "-c"]
-      args:
+apiVersion: v1 					# apiVersion - Kubernetes default api version.
+kind: Pod 						# Kind - Create Pod object.
+metadata: 						# metadata - Here we can define object name, labels and annotaions.
+  name: test-pod-05 					# name - Object name.
+spec: 							# spec - How to manage the pod.
+  containers: 						# containers - Create containers.
+    - name: test-container-05				# name - Container name.
+      image: k8s.gcr.io/busybox 			# image - Container base image.
+      command: ["/bin/sh", "-c"] 			# command - Run command when the container is up.
+      args: 						# args - Run multiple commands when the container is up.
         - echo "print env:";
           env | grep var_name_01;
           echo "var_name_02=$(var_name_02)";
@@ -152,30 +152,30 @@ spec:
           echo "cat files in /etc/config/:";
           cat /etc/config/file-02.txt;
           cat /etc/config/file-03.txt;
-      env:
-        - name: var_name_01
-          valueFrom:
-            configMapKeyRef:
-              name: multiple-data
-              key: key_02
+      env: 						# env - Create environment variables on the container.
+        - name: var_name_01 				# name - The name of the environment variable.
+          valueFrom: 					# valueFrom - From where to take variable value.
+            configMapKeyRef: 				# configMapKeyRef - Take variable value from ConfigMap object.
+              name: multiple-data 			# name - The name of the config map that store the variable.
+              key: key_02 				# key - The key name of the value in the config map.
         - name: var_name_02
           valueFrom:
             configMapKeyRef:
               name: multiple-data
               key: key_03      
-      volumeMounts:
-      - name: config-volume-01
-        mountPath: /etc/config
-  volumes:
-    - name: config-volume-01
-      configMap:
-        name: multiple-data
-        items:
-        - key: file-02.txt
-          path: file-02.txt
+      volumeMounts: 					# volumeMounts - Mount associated volume with pod into the container. 
+      - name: config-volume-01 			# name - volume name.
+        mountPath: /etc/config 			# mountPath - Mount to file system path in the container.
+  volumes: 						# volumes - Create a volume that store ConfigMap object.
+    - name: config-volume-01 				# name - Volume name.
+      configMap: 					# configMap - Define that we wanna associate ConfigMap object.
+        name: multiple-data 				# name - The name of the config map.
+        items: 					# items - we can choose what we wanna to maount.
+        - key: file-02.txt 				# key - the data we want to maount.
+          path: file-02.txt 				# path - the name of the file in the container.
         - key: file-03.txt
           path: file-03.txt        
-  restartPolicy: Never
+  restartPolicy: Never 				# restartPolicy - we dont wanna restart the container after its finish to run.
 ```
 
 
