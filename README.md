@@ -16,7 +16,7 @@ This repository come to explain kubernetes basic objects, their attributes and h
 <br/><br/>
 - **Volumes** – volumes are a medium of storage attached to a pod volumes can be a folder on the host where the pod is running or a persistent volume. volumes can also be configurations or secrets configurations are defined as config maps.
 <br/><br/>
-- **Config Map** – config maps allow us to store configurations for pods as files or key value pairs that can be mapped to environment variables.
+- **[Config Map](https://github.com/matanelg/Kubernetes-Basic/tree/main/ConfigMap)** – config maps allow us to store configurations for pods as files or key value pairs that can be mapped to environment variables.
 <br/><br/>
 - **Secret** – a secret is similar we can store files tls certificates or key value pairs that can be mapped to environment variables.
 <br/><br/>
