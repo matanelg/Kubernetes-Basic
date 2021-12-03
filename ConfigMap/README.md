@@ -30,6 +30,7 @@ KUBERNETES_PORT_443_TCP=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT_HTTPS=443
 PWD=/
 KUBERNETES_SERVICE_HOST=10.152.183.1
+Hi here is some text <span style="color: red">this is red</span>.
 + var_name_01=value_00
 ```
 - Example 02 - Create all environment variables from the confing map using envFrom.
