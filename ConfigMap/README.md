@@ -9,6 +9,14 @@ There are four different ways that you can use a ConfigMap to configure a contai
 
 Check Out kubernetes documentation [link-01](https://kubernetes.io/docs/concepts/configuration/configmap) [link-02](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap)
 
+## Commands
+```diff
+kubectl create configmap <map-name> <data-source>	# create config map from data source.
+kubectl get configmaps					# get all config maps on namespace.
+kubectl get configmaps <map-name> -o yaml		# get config map object as yaml file.
+kubectl describe configmaps <map-name>		# get data of config map object.
+```
+
 ## Deploy Examples
 - Example 01 - Create environment variable on container.
 ```bash
