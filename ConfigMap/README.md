@@ -30,7 +30,6 @@ KUBERNETES_PORT_443_TCP=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT_HTTPS=443
 PWD=/
 KUBERNETES_SERVICE_HOST=10.152.183.1
-Hi here is some text <span style="color: red">this is red</span>.
 + var_name_01=value_00
 ```
 - Example 02 - Create all environment variables from the confing map using envFrom.
@@ -39,14 +38,14 @@ kubectl apply -f example-02.yaml
 kubectl logs pod/test-pod-02
 ```
 Output
-```bash
+```diff
 KUBERNETES_PORT=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT=443
 HOSTNAME=test-pod-02
 SHLVL=1
 HOME=/root
-key_01=value_01
-key_02=value_02
++ key_01=value_01
++ key_02=value_02
 KUBERNETES_PORT_443_TCP_ADDR=10.152.183.1
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 KUBERNETES_PORT_443_TCP_PORT=443
@@ -62,7 +61,7 @@ kubectl apply -f example-03.yaml
 kubectl logs pod/test-pod-03
 ```
 Output
-```bash
+```diff
 KUBERNETES_PORT=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT=443
 HOSTNAME=test-pod-03
@@ -76,8 +75,8 @@ KUBERNETES_PORT_443_TCP=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT_HTTPS=443
 PWD=/
 KUBERNETES_SERVICE_HOST=10.152.183.1
-var_name_03=value_03
-var_name_04=value_04
++ var_name_03=value_03
++ var_name_04=value_04
 ```
 - Example 04 - Mount file from config map to container. 
 ```bash
@@ -85,7 +84,7 @@ kubectl apply -f example-04.yaml
 kubectl logs pod/test-pod-04
 ```
 Output
-```bash
+```diff
 line-01 on file-00.txt
 line-02 on file-00.txt
 line-03 on file-00.txt
@@ -96,7 +95,7 @@ kubectl apply -f example-05.yaml
 kubectl logs pod/test-pod-05
 ```
 Output
-```bash
+```diff
 print env:
 var_name_01=value_02
 var_name_02=value_03
