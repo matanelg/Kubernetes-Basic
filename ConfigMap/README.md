@@ -16,7 +16,7 @@ kubectl apply -f example-01.yaml
 kubectl logs pod/test-pod-00
 ```
 Output
-```bash
+```diff
 KUBERNETES_PORT=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT=443
 HOSTNAME=test-pod-00
@@ -30,7 +30,7 @@ KUBERNETES_PORT_443_TCP=tcp://10.152.183.1:443
 KUBERNETES_SERVICE_PORT_HTTPS=443
 PWD=/
 KUBERNETES_SERVICE_HOST=10.152.183.1
-var_name_01=value_00
+@@ var_name_01=value_00@@
 ```
 - Example 02 - Create all environment variables from the confing map using envFrom.
 ```bash
