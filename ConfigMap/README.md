@@ -14,7 +14,7 @@ Check Out kubernetes documentation [link-01](https://kubernetes.io/docs/concepts
 kubectl create configmap <map-name> <data-source>	# create config map from data source.
 kubectl get configmaps					# get all config maps on namespace.
 kubectl get configmaps <map-name> -o yaml		# get config map object as yaml file.
-kubectl describe configmaps <map-name>                # get data of config map object.
+kubectl describe configmaps <map-name>                  # get data store on config map object.
 ```
 
 ## Deploy Examples
