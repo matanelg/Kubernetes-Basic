@@ -15,9 +15,18 @@ kubectl create configmap <map-name> <data-source>	# create config map from data 
 kubectl get configmaps					# get all config maps on namespace.
 kubectl get configmaps <map-name> -o yaml		# get config map object as yaml file.
 kubectl describe configmaps <map-name>                  # get data store on config map object.
+
+kubectl create configmap <map-name> --from-file=<file-or-directory>
+kubectl create configmap <map-name> --from-file=<file-or-directory-01> --from-file=<file-or-directory-02>
+kubectl create configmap <map-name> --from-env-file=<file-with-env-vars>
+kubectl create <map-name> \
+        --from-env-file=<file-with-env-vars-01> \
+        --from-env-file=<file-with-env-vars-02>
+kubectl create configmap <map-name> --from-file=<my-key-name>=<path-to-file>
+kubectl create configmap <map-name> --from-literal=<key>=<value> --from-literal=<key>=<value>
 ```
 
-## Deploy Examples
+## Yaml Examples
 - Example 01 - Create environment variable on container.
 ```bash
 kubectl apply -f example-01.yaml
@@ -186,4 +195,134 @@ spec:                                            # spec - How to manage the pod.
   restartPolicy: Never                          # restartPolicy - we dont wanna restart the container after its finish to run.
 ```
 
+## Create with kubectl Examples
+- Create configmap for files from directory.
+```bash
+kubectl create configmap configmap-example-01 --from-file=files/ -o yaml
+kubectl describe configmaps configmap-example-01
+```
+Output
+```diff
+Name:         configmap-example-01
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
 
+Data
+====
+env-01.txt:
+----
+env_01_key_01=value_01
+
+env-02.txt:
+----
+env_02_key_01=value_01
+env_02_key_02=value_02
+
+file-01.txt:
+----
+line-01
+
+file-02.txt:
+----
+line-01
+line-02
+
+Events:  <none>
+
+```
+
+- Create configmap from two separate files.
+```bash
+kubectl create configmap configmap-example-02 --from-file=files/file-01.txt --from-file=files/file-02.txt -o yaml
+kubectl describe configmaps configmap-example-02
+```
+Output
+```diff
+Name:         configmap-example-02
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+file-01.txt:
+----
+line-01
+
+file-02.txt:
+----
+line-01
+line-02
+
+Events:  <none>
+
+```
+
+- Create configmap with environment variables from two separate files.
+```bash
+kubectl create configmap configmap-example-03 \
+               --from-env-file=files/env-01.env \
+               --from-env-file=files/env-01.env -o yaml
+kubectl describe configmaps configmap-example-03
+```
+Output
+```diff
+Name:         configmap-example-03
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+env_01_key_01:
+----
+value_01
+Events:  <none>
+
+```
+
+- Create configmap with spesific key for file.
+```bash
+kubectl create configmap configmap-example-04 --from-file=file-01=files/file-01.txt -o yaml
+kubectl describe configmaps configmap-example-04
+```
+Output
+```diff
+Name:         configmap-example-04
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+file-01:
+----
+line-01
+
+Events:  <none>
+
+```
+
+- Create configmap with environment variables from literal.
+```bash
+kubectl create configmap configmap-example-05 --from-literal=key01=value01 --from-literal=key02=value02 -o yaml
+kubectl describe configmaps configmap-example-05
+```
+Output
+```diff
+Name:         configmap-example-05
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+key02:
+----
+value02
+key01:
+----
+value01
+Events:  <none>
+```
