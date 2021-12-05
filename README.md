@@ -7,8 +7,10 @@ This repository come to explain kubernetes basic objects, their attributes and h
 - **Kube config file** – in the config file we can set a context which points to the cluster, also we define users who can access the cluster or part of him by token or username and password. Kubectl connect to the cluster via the api server that takes our configuration and makes it happen. in the cluster the api server runs in the control plane alongside the scheduler and other controllers. controllers watch the state of the workload and make sure the desired state matches the actual state.
 <br/><br/>
 - **Pod** – pod is a workload that we want to deploy to kubernetes the workload can be any type of compute script code or application or part of the application, we can also deploy more than one process in the pod and in other words multiple containers. containers have environment variables, ports to receive network traffic, resources which define request values of how much cpu and memory the pod needs as well as limits and kubernetes will throttle pods that use more cpu as well as kill pods that go over their memory limit.
- - **Volume Mounts** – volume mounts allow us to mount files into specific paths of the container in order to mount a file a volume needs to be defined.
- - **Volumes** – volumes are a medium of storage attached to a pod volumes can be a folder on the host where the pod is running or a persistent volume. volumes can also be configurations or secrets configurations are defined as config maps.
+<br/><br/>
+- **Volume Mounts** – volume mounts allow us to mount files into specific paths of the container in order to mount a file a volume needs to be defined.
+<br/><br/>
+- **Volumes** – volumes are a medium of storage attached to a pod volumes can be a folder on the host where the pod is running or a persistent volume. volumes can also be configurations or secrets configurations are defined as config maps.
 <br/><br/>
 - **Liveliness Probes** – liveliness probes ensure that containers are alive and kubernetes will restart the pod if the probe condition is not met.
 <br/><br/>
@@ -16,7 +18,7 @@ This repository come to explain kubernetes basic objects, their attributes and h
 <br/><br/>
 - **[Config Map](https://github.com/matanelg/Kubernetes-Basic/tree/main/ConfigMap)** – config maps allow us to store configurations for pods as files or key value pairs that can be mapped to environment variables.
 <br/><br/>
-- **[Secret](https://github.com/matanelg/Kubernetes-Basic/tree/main/Secret)**** – a secret is similar we can store files tls certificates or key value pairs that can be mapped to environment variables.
+- **[Secret](https://github.com/matanelg/Kubernetes-Basic/tree/main/Secret)** – a secret is similar we can store files tls certificates or key value pairs that can be mapped to environment variables.
 <br/><br/>
 - **Cron Job** – a cron job is a way to schedule a pod you can run a pod once a day once a week once a month or at your own custom schedule every time the schedule is triggered a job gets created and a job can run one or more pods.
 <br/><br/>
